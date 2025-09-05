@@ -73,6 +73,40 @@
 - Bug/想法用 Issues，方案讨论走 Discussions
 - 赞助/支持请见 `.github/FUNDING.yml`
 
+## 保持领先
+
+Star 本仓库以第一时间收到新版本与重要更新通知。
+
+## 系统要求
+
+- CPU ≥ 2 核
+- 内存 ≥ 4 GiB
+- Python ≥ 3.9（本地运行）
+- Docker / Docker Compose（可选，容器化部署）
+
+## Docker Compose 快速启动
+
+在 `multiscen` 目录下：
+
+```bash
+cd multiscen
+cp .env .env.backup  # 如无 .env，可先运行 setup.sh 自动生成
+docker compose up -d
+# 打开浏览器访问：http://localhost:8501
+```
+
+说明：Compose 将启动主应用（8501）、Redis（6379）与开发用 Mock API（8000）。如需生产入口，可启用 `nginx` profile 与证书目录。
+
+## 社区与支持
+
+- GitHub Issues：提交 Bug 与功能提案
+- GitHub Discussions：分享使用案例与讨论方案
+- 电子邮件：可在仓库简介中补充联系邮箱
+
+## 安全问题
+
+请勿在公开 Issue 披露安全漏洞。可参考仓库根目录 `SECURITY.md` 的上报方式。
+
 ## 许可证
 
 MIT — 去创造更酷的多模态体验吧。 
