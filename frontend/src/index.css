@@ -1,0 +1,132 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+  
+  body {
+    @apply bg-dark-900 text-white;
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  * {
+    @apply border-dark-700;
+  }
+}
+
+@layer components {
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary-400 via-secondary-400 to-accent-400 bg-clip-text text-transparent;
+  }
+  
+  .glass-effect {
+    @apply bg-white/5 backdrop-blur-md border border-white/10;
+  }
+  
+  .button-primary {
+    @apply bg-gradient-to-r from-primary-600 to-secondary-600 text-white font-medium px-6 py-3 rounded-lg hover:from-primary-700 hover:to-secondary-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105;
+  }
+  
+  .button-secondary {
+    @apply glass-effect text-white font-medium px-6 py-3 rounded-lg hover:bg-white/10 transition-all duration-300;
+  }
+  
+  .card {
+    @apply glass-effect rounded-xl p-6 shadow-xl;
+  }
+  
+  .agent-card {
+    @apply card hover:bg-white/10 transition-all duration-300 cursor-pointer transform hover:scale-105;
+  }
+  
+  .status-indicator {
+    @apply w-3 h-3 rounded-full animate-pulse;
+  }
+  
+  .status-idle {
+    @apply bg-gray-400;
+  }
+  
+  .status-working {
+    @apply bg-yellow-400;
+  }
+  
+  .status-completed {
+    @apply bg-green-400;
+  }
+  
+  .status-error {
+    @apply bg-red-400;
+  }
+}
+
+@layer utilities {
+  .text-shadow {
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  }
+  
+  .glow {
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+  }
+  
+  .glow-purple {
+    box-shadow: 0 0 20px rgba(168, 85, 247, 0.5);
+  }
+  
+  .glow-green {
+    box-shadow: 0 0 20px rgba(16, 185, 129, 0.5);
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-dark-800;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-dark-600 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-dark-500;
+}
+
+/* Loading animations */
+@keyframes shimmer {
+  0% {
+    background-position: -468px 0;
+  }
+  100% {
+    background-position: 468px 0;
+  }
+}
+
+.shimmer {
+  animation: shimmer 2s infinite linear;
+  background: linear-gradient(to right, #eff6ff 4%, #dbeafe 25%, #eff6ff 36%);
+  background-size: 1000px 100%;
+}
+
+/* Wave animation for audio visualization */
+@keyframes wave {
+  0%, 100% { height: 20px; }
+  50% { height: 40px; }
+}
+
+.wave-bar {
+  animation: wave 1s ease-in-out infinite;
+}
+
+.wave-bar:nth-child(2) { animation-delay: 0.1s; }
+.wave-bar:nth-child(3) { animation-delay: 0.2s; }
+.wave-bar:nth-child(4) { animation-delay: 0.3s; }
+.wave-bar:nth-child(5) { animation-delay: 0.4s; }

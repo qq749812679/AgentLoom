@@ -1,0 +1,59 @@
+site_name: Multi-Modal AI Orchestrator
+site_description: The Ultimate Multi-Modal AI Creation Platform
+site_author: Multi-Modal AI Community
+site_url: https://qq749812679.github.io/Multi-Modal-AI-Orchestrator
+
+repo_name: qq749812679/Multi-Modal-AI-Orchestrator
+repo_url: https://github.com/qq749812679/Multi-Modal-AI-Orchestrator
+
+theme:
+  name: material
+  palette:
+    - scheme: default
+      primary: blue
+      accent: purple
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      primary: blue
+      accent: purple
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - search.highlight
+    - search.share
+    - content.code.annotate
+
+plugins:
+  - search
+  - mermaid2
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.tabbed:
+      alternate_style: true
+  - attr_list
+  - md_in_html
+
+nav:
+  - Home: index.md
+  - Quick Start: QUICKSTART.md
+  - Architecture: ARCHITECTURE.md
+  - Agents: AGENTS_ARCHITECTURE.md
+  - Orchestrator: ORCHESTRATOR_USAGE.md
+  - Integrations: INTEGRATIONS.md
+  - API Reference: APIS.md
+  - Troubleshooting: TROUBLESHOOTING.md
+  - Contributing: ../CONTRIBUTING.md
+  - Changelog: ../CHANGELOG.md

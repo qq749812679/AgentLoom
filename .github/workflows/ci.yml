@@ -1,0 +1,132 @@
+name: 🚀 CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    name: 🧪 Test Suite
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.9, 3.10, 3.11]
+
+    steps:
+    - name: 📥 Checkout code
+      uses: actions/checkout@v4
+
+    - name: 🐍 Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ matrix.python-version }}
+
+    - name: 📦 Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        pip install pytest pytest-cov black flake8
+
+    - name: 🎨 Code formatting check
+      run: |
+        black --check .
+        flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+
+    - name: 🧪 Run tests
+      run: |
+        pytest tests/ --cov=mscen --cov-report=xml
+
+    - name: 📊 Upload coverage to Codecov
+      uses: codecov/codecov-action@v3
+      with:
+        file: ./coverage.xml
+        flags: unittests
+        name: codecov-umbrella
+
+  lint:
+    name: 🔍 Code Quality
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: 🐍 Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: 3.9
+
+    - name: 📦 Install linting tools
+      run: |
+        python -m pip install --upgrade pip
+        pip install black flake8 mypy bandit safety
+
+    - name: 🎨 Black formatting
+      run: black --check --diff .
+
+    - name: 🔍 Flake8 linting
+      run: flake8 .
+
+    - name: 🔒 Security check with bandit
+      run: bandit -r mscen/
+
+    - name: 🛡️ Safety check
+      run: safety check
+
+  docker:
+    name: 🐳 Docker Build
+    runs-on: ubuntu-latest
+    needs: [test, lint]
+    if: github.ref == 'refs/heads/main'
+
+    steps:
+    - name: 📥 Checkout code
+      uses: actions/checkout@v4
+
+    - name: 🐳 Set up Docker Buildx
+      uses: docker/setup-buildx-action@v3
+
+    - name: 🔑 Login to Docker Hub
+      if: github.event_name != 'pull_request'
+      uses: docker/login-action@v3
+      with:
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+
+    - name: 🏗️ Build and push Docker image
+      uses: docker/build-push-action@v5
+      with:
+        context: .
+        platforms: linux/amd64,linux/arm64
+        push: ${{ github.event_name != 'pull_request' }}
+        tags: |
+          yourusername/multi-modal-ai:latest
+          yourusername/multi-modal-ai:${{ github.sha }}
+        cache-from: type=gha
+        cache-to: type=gha,mode=max
+
+  docs:
+    name: 📖 Documentation
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+
+    steps:
+    - name: 📥 Checkout code
+      uses: actions/checkout@v4
+
+    - name: 🐍 Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: 3.9
+
+    - name: 📦 Install docs dependencies
+      run: |
+        pip install mkdocs mkdocs-material mkdocs-mermaid2-plugin
+
+    - name: 🏗️ Build documentation
+      run: mkdocs build
+
+    - name: 🚀 Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./site
