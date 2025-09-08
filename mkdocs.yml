@@ -1,5 +1,5 @@
-site_name: Multi-Modal AI Orchestrator
-site_description: The Ultimate Multi-Modal AI Creation Platform
+site_name: AgentLoom｜灵构织机
+site_description: One loom to orchestrate multi-modal, multi-agent creation
 site_author: Multi-Modal AI Community
 site_url: https://qq749812679.github.io/Multi-Modal-AI-Orchestrator
 
@@ -8,6 +8,8 @@ repo_url: https://github.com/qq749812679/Multi-Modal-AI-Orchestrator
 
 theme:
   name: material
+  logo: assets/logo-agentloom.png
+  favicon: assets/logo-agentloom.png
   palette:
     - scheme: default
       primary: blue

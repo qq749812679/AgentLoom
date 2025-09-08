@@ -51,8 +51,8 @@ const Sidebar: React.FC = () => {
                 <Zap className="w-5 h-5 text-white" />
               </div>
               <div>
-                <h1 className="text-lg font-bold gradient-text">MultiModal AI</h1>
-                <p className="text-xs text-gray-400">Orchestrator v1.0</p>
+                <h1 className="text-lg font-bold gradient-text">AgentLoom</h1>
+                <p className="text-xs text-gray-400">AgentLoom v1.0</p>
               </div>
             </motion.div>
           )}

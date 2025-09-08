@@ -1,11 +1,11 @@
 #!/bin/bash
 
-# 🚀 Multi-Modal AI Orchestrator Setup Script
+# 🚀 AgentLoom｜灵构织机 Setup Script
 # This script sets up everything you need to run the project
 
 set -e  # Exit on any error
 
-echo "🌟 Welcome to Multi-Modal AI Orchestrator Setup!"
+echo "🌟 Welcome to AgentLoom｜灵构织机 Setup!"
 echo "================================================"
 
 # Colors for output
@@ -101,7 +101,7 @@ setup_env() {
     print_status "Setting up environment configuration..."
     if [ ! -f ".env" ]; then
         cat > .env << EOL
-# Multi-Modal AI Orchestrator Configuration
+# AgentLoom｜灵构织机 Configuration
 
 # OpenAI Configuration (Optional - for LLM features)
 OPENAI_API_KEY=your_openai_api_key_here

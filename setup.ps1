@@ -7,7 +7,7 @@ function Write-Ok($msg)   { Write-Host "[OK]   $msg" -ForegroundColor Green }
 function Write-Warn($msg) { Write-Host "[WARN] $msg" -ForegroundColor Yellow }
 function Write-Err($msg)  { Write-Host "[ERR]  $msg" -ForegroundColor Red }
 
-Write-Host "🌟 Multi-Modal AI Orchestrator Setup (Windows)" -ForegroundColor Magenta
+Write-Host "🌟 AgentLoom｜灵构织机 Setup (Windows)" -ForegroundColor Magenta
 
 # 1) Check Python >= 3.9
 Write-Info "Checking Python version..."
@@ -53,7 +53,7 @@ Write-Ok "Directories ready"
 Write-Info "Preparing .env..."
 if (-not (Test-Path ".env")) {
   @"
-# Multi-Modal AI Orchestrator Configuration
+# AgentLoom｜灵构织机 Configuration
 OPENAI_API_KEY=your_openai_api_key_here
 IMAGE_GENERATION_URL=http://localhost:8000/txt2img
 MUSIC_GENERATION_URL=http://localhost:8000/musicgen

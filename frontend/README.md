@@ -1,6 +1,6 @@
 # 🎨 Multi-Modal AI Frontend
 
-A modern React frontend for the Multi-Modal AI Orchestrator platform, showcasing real-time AI agent visualization and interactive multi-modal content creation.
+A modern React frontend for the AgentLoom｜灵构织机 platform, showcasing real-time AI agent visualization and interactive multi-modal content creation.
 
 ## ✨ Features
 

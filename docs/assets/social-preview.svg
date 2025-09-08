@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="AgentLoom docs preview">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0b1020"/>
+      <stop offset="100%" stop-color="#0b1020"/>
+    </linearGradient>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#7c3aed"/>
+      <stop offset="100%" stop-color="#06b6d4"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <g transform="translate(120,160)">
+    <text x="0" y="0" font-family="Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial" font-size="60" font-weight="800" fill="#e2e8f0">AgentLoom｜灵构织机</text>
+    <text x="0" y="56" font-family="Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial" font-size="28" fill="#cbd5e1">One loom to orchestrate multi‑modal, multi‑agent creation</text>
+  </g>
+  <g transform="translate(120,320)">
+    <rect x="0" y="0" width="340" height="60" rx="12" fill="url(#g)"/>
+    <text x="20" y="40" font-family="Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial" font-size="24" fill="#0b1020">Docs • Quickstart • API</text>
+  </g>
+</svg> 

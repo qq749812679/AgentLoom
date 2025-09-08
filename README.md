@@ -1,4 +1,6 @@
-# 🌟 Multi‑Modal AI Orchestrator
+# 🌟 AgentLoom｜灵构织机
+
+**One loom to orchestrate multi‑modal, multi‑agent creation**
 
 [简体中文](README.zh-CN.md) | English
 

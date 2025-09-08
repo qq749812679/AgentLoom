@@ -1,7 +1,7 @@
 {
   "name": "multi-modal-ai-frontend",
   "version": "1.0.0",
-  "description": "Multi-Modal AI Orchestrator Frontend",
+  "description": "AgentLoom｜灵构织机 Frontend",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",

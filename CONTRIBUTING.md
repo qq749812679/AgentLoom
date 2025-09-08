@@ -1,4 +1,4 @@
-# 🤝 Contributing to Multi-Modal AI Orchestrator
+# 🤝 Contributing to AgentLoom｜灵构织机
 
 Thank you for your interest in contributing! This project thrives on community contributions, and we welcome developers of all skill levels.
 
