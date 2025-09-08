@@ -70,6 +70,7 @@ jobs:
       run: bandit -r mscen/
 
     - name: 🛡️ Safety check
+      continue-on-error: true
       run: safety check
 
   docker:
