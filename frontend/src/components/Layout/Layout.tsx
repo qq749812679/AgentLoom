@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Sidebar from './Sidebar';
 import Header from './Header';
 import { useAppStore } from '../../store/appStore';
+import WhatsNewModal from './WhatsNewModal';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -9,6 +10,13 @@ interface LayoutProps {
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   const { sidebarOpen } = useAppStore();
+  const [showWhatsNew, setShowWhatsNew] = useState(false);
+
+  useEffect(() => {
+    const handler = () => setShowWhatsNew(true);
+    window.addEventListener('open-whats-new', handler as EventListener);
+    return () => window.removeEventListener('open-whats-new', handler as EventListener);
+  }, []);
 
   return (
     <div className="min-h-screen bg-dark-900 text-white">
@@ -34,6 +42,9 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
           </div>
         </main>
       </div>
+
+      {/* Modals */}
+      <WhatsNewModal open={showWhatsNew} onClose={() => setShowWhatsNew(false)} />
     </div>
   );
 };

@@ -51,6 +51,9 @@ markdown_extensions:
 nav:
   - Home: index.md
   - Quick Start: QUICKSTART.md
+  - Demos: DEMOS.md
+  - Device Wiring & Safety: DEVICE_WIRING.md
+  - Home Assistant & MQTT: HOME_ASSISTANT_MQTT.md
   - Architecture: ARCHITECTURE.md
   - Agents: AGENTS_ARCHITECTURE.md
   - Orchestrator: ORCHESTRATOR_USAGE.md

@@ -9,9 +9,11 @@ import {
   Sun,
   Wifi,
   WifiOff,
-  Activity
+  Activity,
+  Sparkles
 } from 'lucide-react';
 import { useAppStore } from '../../store/appStore';
+import type { GenerationJob, Agent as AgentType } from '../../store/appStore';
 
 const Header: React.FC = () => {
   const { 
@@ -22,8 +24,8 @@ const Header: React.FC = () => {
     jobs 
   } = useAppStore();
 
-  const activeJobs = jobs.filter(job => job.status === 'processing').length;
-  const workingAgents = agents.filter(agent => agent.status === 'working').length;
+  const activeJobs = jobs.filter((job: GenerationJob) => job.status === 'processing').length;
+  const workingAgents = agents.filter((agent: AgentType) => agent.status === 'working').length;
 
   return (
     <motion.header
@@ -92,6 +94,17 @@ const Header: React.FC = () => {
             ) : (
               <Moon className="w-5 h-5 text-blue-400" />
             )}
+          </button>
+
+          {/* What's New */}
+          <button
+            className="p-2 rounded-lg hover:bg-white/10 transition-colors flex items-center space-x-2"
+            onClick={() => window.dispatchEvent(new CustomEvent('open-whats-new'))}
+            aria-label="What's New"
+            title="What's New"
+          >
+            <Sparkles className="w-5 h-5 text-purple-400" />
+            <span className="hidden md:inline text-sm">What's New</span>
           </button>
 
           {/* Notifications */}

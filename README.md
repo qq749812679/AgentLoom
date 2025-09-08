@@ -4,7 +4,7 @@
 
 [简体中文](README.zh-CN.md) | English
 
-Make one prompt become an immersive, production‑ready experience: a single pipeline for Text → Image → Music → Lights → Video, with real Philips Hue / WLED control.
+> New: Real-time Text → Image → Music → Lights → Video with true device control (Hue/WLED & GPIO/USB on Raspberry Pi/Arduino). Five scene templates: Director, Kids Theater, Wellness, Party DJ/VJ, Home Recipes. Quick start below.
 
 ---
 

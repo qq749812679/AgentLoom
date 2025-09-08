@@ -11,13 +11,16 @@ import {
   ChevronLeft,
   ChevronRight,
   Zap,
-  Activity
+  Activity,
+  LayoutGrid
 } from 'lucide-react';
 import { useAppStore } from '../../store/appStore';
+import type { Agent as AgentType } from '../../store/appStore';
 
 const menuItems = [
   { id: 'home', path: '/', icon: Home, label: 'Home', description: 'Overview & Dashboard' },
   { id: 'studio', path: '/studio', icon: Palette, label: 'Creative Studio', description: 'Multi-modal Creation' },
+  { id: 'templates', path: '/templates', icon: LayoutGrid, label: 'Templates', description: 'Scene Library' },
   { id: 'agents', path: '/agents', icon: Bot, label: 'AI Agents', description: 'Agent Management' },
   { id: 'devices', path: '/devices', icon: Lightbulb, label: 'Smart Devices', description: 'Device Control' },
   { id: 'community', path: '/community', icon: Users, label: 'Community', description: 'Share & Collaborate' },
@@ -28,7 +31,7 @@ const Sidebar: React.FC = () => {
   const navigate = useNavigate();
   const { sidebarOpen, toggleSidebar, agents, connectionStatus } = useAppStore();
 
-  const activeAgents = agents.filter(agent => agent.status === 'working').length;
+  const activeAgents = agents.filter((agent: AgentType) => agent.status === 'working').length;
   const isConnected = connectionStatus === 'connected';
 
   return (

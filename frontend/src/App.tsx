@@ -8,6 +8,7 @@ import AgentsPage from './pages/AgentsPage';
 import DevicesPage from './pages/DevicesPage';
 import CommunityPage from './pages/CommunityPage';
 import { useAppStore } from './store/appStore';
+import TemplatesPage from './pages/TemplatesPage';
 
 function App() {
   const { theme } = useAppStore();
@@ -22,6 +23,7 @@ function App() {
             <Route path="/agents" element={<AgentsPage />} />
             <Route path="/devices" element={<DevicesPage />} />
             <Route path="/community" element={<CommunityPage />} />
+            <Route path="/templates" element={<TemplatesPage />} />
           </Routes>
         </Layout>
         <Toaster

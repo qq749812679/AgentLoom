@@ -14,11 +14,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Plugin architecture for extensible functionality
 - Comprehensive error handling with user-friendly messages
 - Docker containerization for easy deployment
+- Unified timeline sync across Text → Image → Music → Lights → Video
+- True device control: Philips Hue / WLED and GPIO/USB (Raspberry Pi/Arduino)
+- Five scene templates: Director, Kids Theater, Wellness, Party DJ/VJ, Home Recipes
+- Strategy routing (latency/cost/quality) with health checks and fallbacks
+- Offline replay with best-parameter snapshots and ratings loop
 
 ### 🔧 Changed
 - Upgraded UI to be more intuitive and user-friendly
 - Improved agent orchestration with LLM-powered planning
 - Enhanced device control with better error recovery
+- Docs updated with wiring diagrams, Home Assistant/MQTT guides, quick demos
 
 ### 🐛 Fixed
 - Memory leaks in image generation pipeline
