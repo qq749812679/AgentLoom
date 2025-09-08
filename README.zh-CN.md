@@ -43,14 +43,89 @@
 - `mscen gen "sunset jazz bar" --video`
 - `mscen list`
 
-## 它相对常见开源方案的优势
+## 部署配置
 
-- **一体化多模态流水线**：不是“单模态拼拼凑凑”，而是端到端协同
-- **设备原生**：直接驱动 Hue/WLED，体验落地到“房间里的光”
-- **智能闭环**：Agent 规划 + 反馈学习 + 自动调参，减少反复试错
-- **可运营的生产体验**：延迟/成本画像 + 任务队列 + 首启向导
+- 系统要求
+  - Python 3.9+；Node 18+（前端）；FFmpeg（视频）
+  - 建议：内存 8GB+；可选 GPU；GPIO/USB 建议 Raspberry Pi/Arduino
+- 环境变量（.env）
+  - 最小配置
+    - `OPENAI_API_KEY=...`
+  - 设备
+    - `HUE_BRIDGE_IP=192.168.1.100`
+    - `HUE_USERNAME=your_hue_username`
+    - `WLED_IP=192.168.1.101`
+    - `GPIO_ENABLED=true`
+    - `ARDUINO_SERIAL=COM3`（或 `/dev/ttyUSB0`）
+- .env 示例
+```
+OPENAI_API_KEY=sk-...
+HUE_BRIDGE_IP=192.168.1.100
+HUE_USERNAME=your_hue_username
+WLED_IP=192.168.1.101
+GPIO_ENABLED=true
+ARDUINO_SERIAL=COM3
+```
+- Docker（可选）
+```
+docker-compose up -d
+```
 
 ## 架构速览
+
+```mermaid
+flowchart LR
+  subgraph 前端 [React / Tailwind]
+    UI[Studio / 模板库 / 设备]
+  end
+  subgraph 后端 [Streamlit + FastAPI]
+    API[REST/WebSocket]
+    Orchestrator[LangGraph Orchestrator]
+    Memory[记忆/偏好]
+    Safety[安全过滤]
+  end
+  subgraph 连接器
+    IMG[图像后端]
+    MUS[音乐后端]
+    TTS[语音 STT/TTS]
+    HUE[Philips Hue]
+    WLED[WLED]
+    GPIO[GPIO/USB]
+  end
+
+  UI --> API
+  API --> Orchestrator
+  Orchestrator --> Memory
+  Orchestrator --> Safety
+  Orchestrator --> IMG
+  Orchestrator --> MUS
+  Orchestrator --> TTS
+  Orchestrator --> HUE
+  Orchestrator --> WLED
+  Orchestrator --> GPIO
+```
+
+```mermaid
+sequenceDiagram
+  participant 用户
+  participant UI as 前端 UI
+  participant API as FastAPI
+  participant Orc as LangGraph Orchestrator
+  participant IMG as 图像后端
+  participant MUS as 音乐后端
+  participant HUE as Hue/WLED/GPIO
+  participant VID as 视频合成
+
+  用户->>UI: 口令 / 选择模板
+  UI->>API: 创建任务（text-to-all）
+  API->>Orc: 规划代理与时间轴
+  Orc->>IMG: 生成图像
+  Orc->>MUS: 生成/编排音乐
+  Orc->>HUE: 编排灯光（节拍对齐）
+  Orc->>VID: 合成视频
+  Orc->>API: 返回结果（url/预览）
+  API->>UI: 实时进度与产物
+```
 
 - 后端：Streamlit + FastAPI + LangGraph（反馈学习、模型优化）
 - 前端：React + TypeScript + Tailwind（实时 Agent/队列可视化）

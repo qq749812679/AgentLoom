@@ -43,7 +43,89 @@
 - `mscen gen "sunset jazz bar" --video`
 - `mscen list`
 
+## Deployment
+
+- System Requirements
+  - Python 3.9+; Node 18+ (for React frontend); FFmpeg (video)
+  - Recommended: 8GB RAM+, GPU optional; Raspberry Pi/Arduino for GPIO/USB
+- Environment Variables (.env)
+  - Minimal
+    - `OPENAI_API_KEY=...`
+  - Devices
+    - `HUE_BRIDGE_IP=192.168.1.100`
+    - `HUE_USERNAME=your_hue_username`
+    - `WLED_IP=192.168.1.101`
+    - `GPIO_ENABLED=true`
+    - `ARDUINO_SERIAL=COM3` (or `/dev/ttyUSB0`)
+- Example .env
+```
+OPENAI_API_KEY=sk-...
+HUE_BRIDGE_IP=192.168.1.100
+HUE_USERNAME=your_hue_username
+WLED_IP=192.168.1.101
+GPIO_ENABLED=true
+ARDUINO_SERIAL=COM3
+```
+- Docker (optional)
+```
+docker-compose up -d
+```
+
 ## Architecture at a glance
+
+```mermaid
+flowchart LR
+  subgraph Frontend [React / Tailwind]
+    UI[Studio / Templates / Devices]
+  end
+  subgraph Backend [Streamlit + FastAPI]
+    API[REST/WebSocket]
+    Orchestrator[LangGraph Orchestrator]
+    Memory[Conversation/Preference]
+    Safety[Safety Filters]
+  end
+  subgraph Connectors
+    IMG[Image Backends]
+    MUS[Music Backends]
+    TTS[STT/TTS]
+    HUE[Philips Hue]
+    WLED[WLED]
+    GPIO[GPIO/USB]
+  end
+
+  UI --> API
+  API --> Orchestrator
+  Orchestrator --> Memory
+  Orchestrator --> Safety
+  Orchestrator --> IMG
+  Orchestrator --> MUS
+  Orchestrator --> TTS
+  Orchestrator --> HUE
+  Orchestrator --> WLED
+  Orchestrator --> GPIO
+```
+
+```mermaid
+sequenceDiagram
+  participant User
+  participant UI as Frontend UI
+  participant API as FastAPI
+  participant Orc as LangGraph Orchestrator
+  participant IMG as Image Backend
+  participant MUS as Music Backend
+  participant HUE as Hue/WLED/GPIO
+  participant VID as Video Composer
+
+  User->>UI: Prompt / select template
+  UI->>API: Create job (text-to-all)
+  API->>Orc: Plan agents & timeline
+  Orc->>IMG: Generate image(s)
+  Orc->>MUS: Compose music / beat
+  Orc->>HUE: Program lights (beat-synced)
+  Orc->>VID: Render video
+  Orc->>API: Results (urls/preview)
+  API->>UI: Live updates & final assets
+```
 
 - Backend: Streamlit + FastAPI + LangGraph (feedback learner, model optimizer)
 - Frontend: React + TypeScript + Tailwind (real‑time agent/queue views)
