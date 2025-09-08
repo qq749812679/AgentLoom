@@ -8,8 +8,8 @@ repo_url: https://github.com/qq749812679/Multi-Modal-AI-Orchestrator
 
 theme:
   name: material
-  logo: assets/logo-agentloom.png
-  favicon: assets/logo-agentloom.png
+  logo: assets/logo-agentloom.svg
+  favicon: assets/logo-agentloom.svg
   palette:
     - scheme: default
       primary: blue

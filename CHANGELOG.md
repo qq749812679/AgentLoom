@@ -14,22 +14,41 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Plugin architecture for extensible functionality
 - Comprehensive error handling with user-friendly messages
 - Docker containerization for easy deployment
-- Unified timeline sync across Text → Image → Music → Lights → Video
-- True device control: Philips Hue / WLED and GPIO/USB (Raspberry Pi/Arduino)
-- Five scene templates: Director, Kids Theater, Wellness, Party DJ/VJ, Home Recipes
-- Strategy routing (latency/cost/quality) with health checks and fallbacks
-- Offline replay with best-parameter snapshots and ratings loop
 
 ### 🔧 Changed
 - Upgraded UI to be more intuitive and user-friendly
 - Improved agent orchestration with LLM-powered planning
 - Enhanced device control with better error recovery
-- Docs updated with wiring diagrams, Home Assistant/MQTT guides, quick demos
 
 ### 🐛 Fixed
 - Memory leaks in image generation pipeline
 - Race conditions in multi-agent coordination
 - Session state management issues
+
+## [1.1.0] - 2025-01-15
+
+### 🚀 Added
+- Unified timeline sync across Text → Image → Music → Lights → Video
+- True device control: Philips Hue / WLED and GPIO/USB (Raspberry Pi/Arduino)
+- Five scene templates: Director, Kids Theater, Wellness, Party DJ/VJ, Home Recipes
+- Strategy routing (latency/cost/quality) with health checks and fallbacks
+- Offline replay with best-parameter snapshots and ratings loop
+- What's New modal with feature highlights
+- Templates library page with five ready-to-use scenarios
+- Deployment configuration guide with environment variables
+- Technical architecture and product flow diagrams (Mermaid)
+- Device wiring & safety documentation
+- Home Assistant & MQTT integration guide
+- Quick demo scripts (≤60s each)
+
+### 🔧 Changed
+- Docs updated with wiring diagrams, Home Assistant/MQTT guides, quick demos
+- README enhanced with deployment config and architecture diagrams
+- MkDocs configuration updated to use SVG assets
+- Frontend navigation includes Templates library
+
+### 🐛 Fixed
+- MkDocs asset paths corrected for proper documentation builds
 
 ## [1.0.0] - 2024-01-15
 
@@ -132,21 +151,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## 🚀 Future Roadmap
 
-### 📅 Version 1.1 (Q2 2024)
+### 📅 Version 1.2 (Q2 2025)
 - [ ] Mobile app with camera integration
 - [ ] Voice-only interaction mode
 - [ ] Advanced video effects and transitions
 - [ ] Cloud deployment and scaling
 - [ ] Enterprise team management
 
-### 📅 Version 1.2 (Q3 2024)
+### 📅 Version 1.3 (Q3 2025)
 - [ ] AR/VR integration for immersive experiences
 - [ ] Marketplace for community plugins
 - [ ] Advanced AI personality customization
 - [ ] Integration with major smart home platforms
 - [ ] Real-time performance analytics
 
-### 📅 Version 2.0 (Q4 2024)
+### 📅 Version 2.0 (Q4 2025)
 - [ ] Emotion-aware content generation
 - [ ] Multi-language natural language support
 - [ ] Hardware partnership integrations
