@@ -1,5 +1,9 @@
 # 🌟 AgentLoom｜灵构织机
 
+[![CI](https://github.com/qq749812679/AgentLoom/actions/workflows/ci.yml/badge.svg)](https://github.com/qq749812679/AgentLoom/actions)
+[![Release](https://img.shields.io/github/v/release/qq749812679/AgentLoom?label=release)](https://github.com/qq749812679/AgentLoom/releases)
+[![Docs](https://img.shields.io/badge/docs-online-blue)](https://qq749812679.github.io/Multi-Modal-AI-Orchestrator)
+
 **One loom to orchestrate multi‑modal, multi‑agent creation**
 
 [简体中文](README.zh-CN.md) | English

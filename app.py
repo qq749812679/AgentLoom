@@ -171,12 +171,12 @@ with tab1:
     col1, col2 = st.columns([2, 1])
     with col1:
         duration = st.slider("音乐时长 (秒)", min_value=5, max_value=60, value=20, step=5)
-        
+
         # Backend selection (simplified for smart UI)
         use_remote_img = st.checkbox("远程图片模型", value=bool(img_backend))
         use_remote_music = st.checkbox("远程音乐模型", value=bool(music_backend))
         use_sd = st.checkbox("使用SD WebUI", value=bool(sd_backend))
-        
+
         gen = st.button("🚀 开始创作", type="primary")
     
     with col2:
@@ -210,6 +210,12 @@ with tab1:
         
         # 图片生成
         try:
+            # Get parameters from smart UI panel or use defaults
+            negative = params.get("negative_prompt", "")
+            seed = params.get("seed", -1)
+            steps = params.get("steps", 25)
+            guidance = params.get("guidance", 5.0)
+
             if use_sd and sd_backend:
                 try:
                     img = sd_backend.txt2img(SDWebUIParams(prompt=theme, negative_prompt=negative, seed=None if seed == -1 else int(seed), steps=int(steps), cfg_scale=float(guidance), width=896, height=512))

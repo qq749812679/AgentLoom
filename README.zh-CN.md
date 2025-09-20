@@ -1,5 +1,9 @@
 # 🌟 多模态 AI 编排平台
 
+[![CI](https://github.com/qq749812679/AgentLoom/actions/workflows/ci.yml/badge.svg)](https://github.com/qq749812679/AgentLoom/actions)
+[![Release](https://img.shields.io/github/v/release/qq749812679/AgentLoom?label=release)](https://github.com/qq749812679/AgentLoom/releases)
+[![Docs](https://img.shields.io/badge/文档-docs-blue)](https://qq749812679.github.io/Multi-Modal-AI-Orchestrator)
+
 [English README](README.md) | 简体中文
 
 > 新版发布：实时“文字 → 图片 → 音乐 → 灯光 → 视频”统一时间轴同步，直连真设备（Philips Hue/WLED & 树莓派/Arduino 的 GPIO/USB）。内置五大场景：情境导演、亲子即兴剧场、身心调谐、派对 DJ/VJ 协作台、家居情境食谱。下方 3 分钟快速上手。

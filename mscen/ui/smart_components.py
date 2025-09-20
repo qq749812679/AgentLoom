@@ -107,6 +107,7 @@ class SmartUI:
             with col2:
                 params["resolution"] = st.selectbox("分辨率", [512, 768, 1024], index=1, key=f"{key}_res")
                 params["seed"] = st.number_input("随机种子", value=-1, key=f"{key}_seed")
+                params["negative_prompt"] = st.text_input("负向提示词", value="", placeholder="例如: blurry, low quality", key=f"{key}_negative")
         
         return params
     

@@ -73,10 +73,10 @@ CACHE_ENABLED=true
 
 # 7) Health check
 Write-Info "Running health check..."
-python - << 'PY'
+python -c "
 import streamlit, PIL, numpy, scipy
 print('✅ Core dependencies working')
-PY
+"
 Write-Ok "Setup complete"
 
 Write-Host "下一步：`n1) 修改 .env 填写你的 Key (可选)`n2) 启动后端： streamlit run app.py`n3) 访问 http://localhost:8501" -ForegroundColor Cyan 
